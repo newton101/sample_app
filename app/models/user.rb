@@ -10,8 +10,6 @@ class User < ActiveRecord::Base
                                     class_name: "Relationship", 
                                     dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
-  # Note: The :source key for :followers attribute could be omitted as Rails will automatically
-  # singularize followers and find the "follower_id" foreign key in this case.
 
 
   before_save { |user| user.email = email.downcase }
